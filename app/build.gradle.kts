@@ -55,7 +55,8 @@ android {
 dependencies {
     //font
     implementation ("androidx.compose.ui:ui-text-google-fonts:1.6.3")
-
+    implementation ("androidx.activity:activity-ktx:1.3.1")
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
 
     implementation("com.google.dagger:hilt-android:2.49")

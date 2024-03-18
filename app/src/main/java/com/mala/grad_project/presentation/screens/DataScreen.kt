@@ -1,7 +1,13 @@
 package com.mala.grad_project.presentation.screens
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.opengl.Visibility
+import android.provider.MediaStore
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.material.TextFieldDefaults.textFieldColors
 
@@ -85,6 +91,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
+import com.mala.grad_project.DataSteps.DataScreen
+import com.mala.grad_project.DataSteps.GenderScreen
+import com.mala.grad_project.DataSteps.PickingPhoto
+import com.mala.grad_project.DataSteps.UploadInbodyScreen
 import com.mala.grad_project.R
 import com.mala.grad_project.compoableOfData.CardOfGender
 import com.mala.grad_project.compoableOfData.Circle
@@ -199,160 +211,10 @@ modifier = Modifier
 fun ShowMe(){
 DataFun()
 }
-
-// gender Screen
-// step one
-@Composable
-fun GenderScreen(onNextScreen: () -> Unit) {
-    var selectedGender by remember { mutableStateOf("test") }
-    val context = LocalContext.current
-
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(10.dp)
-        , horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Spacer30()
-        Text(
-            text = "What is your gender?",
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer30()
-        CardOfGender(painter = painterResource(id = R.drawable.boy), type = "Male",isSelected =selectedGender=="Male"){
-            selectedGender = "Male"
-
-        }
-        Spacer30()
-        CardOfGender(painter = painterResource(id = R.drawable.woman), type="Female",isSelected = selectedGender=="Female"){
-            selectedGender="Female"
-        }
-        Spacer30()
-        Button(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 230.dp, end = 20.dp),
-            onClick = {
-                      if(selectedGender=="h"){
-                          Toast.makeText(context,"select your Gender please",Toast.LENGTH_SHORT).show()
-                      }else{
-                          onNextScreen()
-                      }
-            }
-            ,    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                circleColor,
-                contentColor = GenderBackGround
-            )
-        ) {
-            Text(text = "next", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-        }
-    }
-
-}
-//step two
-@Composable
-fun DataScreen(
-onNextScreen:()->Unit,
-onBackScreen:()->Unit
-) {
-
-    var state by remember { mutableStateOf("") }
-    var state2 by remember { mutableStateOf("") }
-    var state3 by remember { mutableStateOf("") }
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(10.dp)
-    ) {
-        Spacer30()
-
-        OwenTextField(
-            state = state,
-            onValueChange = { state = it },
-            holder = "Enter your age",
-            text = "What is your age?",isError = ChecktoError(state)
-        )
-            Spacer30()
-            OwenTextField(state =state2
-                , onValueChange ={state2=it}
-                , holder ="What is your Weight"
-                , text ="What is your age?",
-                isError = ChecktoError(state2)
-            )
-            Spacer30()
-            OwenTextField(state =state3 , onValueChange ={state3=it} , holder ="Enter your tall" , text ="What is your tall?" ,isError =ChecktoError(state3))
-        Spacer50()
-        Spacer30()
-        TwoButton(onNextScreen = { onNextScreen() },) {
-            onBackScreen()
-        }
-
-    }
-}
 fun ChecktoError(State:String):Boolean{
     if(State=="")
         return true
     else
         return false
 }
-//step3
-@Composable
-fun UploadInbodyScreen(
-    onNextScreen:()->Unit,
-   onBackScreen:()->Unit,
-    onSkip:()->Unit
-) {
-   Column(
-       modifier = Modifier
-           .fillMaxSize()
-           .background(Color.White)
-           .padding(10.dp)
-   ) {
-       Spacer50()
-       var state by remember { mutableStateOf("") }
-       OwenTextFieldWithUploadIcon(state,{state=it},"Upload your inbody ","Upload your inbody")
-       Text(modifier = Modifier
-           .padding(start = 250.dp, end = 30.dp, top = 10.dp)
-           .clickable { onSkip() },
-           text ="Skip now" ,
-           fontSize = 14.sp,
-           fontWeight = FontWeight.Bold,
-           color = hinttextColor,
-           textDecoration = TextDecoration.Underline
-       )
-       Spacer50()
-       Spacer50()
-       Spacer50()
-       TwoButton(onNextScreen = { onNextScreen() },) {
-           onBackScreen()
-       }
 
-   }
-}
-// step 4
-@Composable
-fun PickingPhoto(
-    onNextScreen:()->Unit,
-    onBackScreen:()->Unit
-){
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(10.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-
-
-    ){
-        Spacer30()
-        CircleOutlinePreview()
-        Spacer150()
-        Spacer150()
-        TwoButton(onNextScreen = { onNextScreen() },) {
-            onBackScreen()
-        }
-
-    }
-}

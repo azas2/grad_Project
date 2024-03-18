@@ -24,7 +24,7 @@ import com.mala.grad_project.ui.theme.circleColor
 @Composable
 fun TwoButton(
     onNextScreen:()->Unit,
-    onBackScreen:()->Unit) {
+    onBackScreen:()->Unit,text:String) {
     Row(
         modifier = Modifier.fillMaxSize(),
         horizontalArrangement = Arrangement.SpaceBetween
@@ -66,7 +66,7 @@ fun TwoButton(
                 contentColor = GenderBackGround
             )
         ) {
-            Text(text = "Finish", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
         }
 

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">grad_Project</string>
+    <string name="get_started">Let’s</string>
+    <string name="get_started2"> get started</string>
+    <string name="subtitle_LetGo">Everything start from here</string>
+    <string name="Log_in">Log in</string>
+    <string name="Sign_up">Sign up</string>
+    <string name="LogIn_Welcome_back">Welcome back</string>
+    <string name="Signup_Create_your_account">Create your account</string>
+    <string name="Login_Subtitle">Enter your mobile number</string>
+    <string name="Signup_First_name">First name</string>
+    <string name="Signup_Last_Name">Last name</string>
+    <string name="Signup_Mobile_number">Mobile number</string>
+    <string name="Signup_Create_an_account">Create an account</string>
+    <string name="Signup_Already_a_member">Already a member?</string>
+    <string name="Signup_Enter_your_first_name">Enter your first name</string>
+    <string name="Signup_Enter_your_last_name">Enter your last name</string>
+    <string name="Signup_Enter_your_mobile_number">Enter your last name</string>
+    <string name="This_number_is_not_registered_Please">This number is not registered. Please</string>
+    <string name="Don_t_have_account">Don’t have account?</string>
+    <string name="Login_create_an_account"> create an account</string>
+    <string name="Login_Verfied_Your_Number">Verfied Your Number</string>
+    <string name="Login_We_sent_you_a_code_please_enter_it">We sent you a code, please enter it</string>
+    <string name="Login_Resend_it">Resend it</string>
+    <string name="Login_Continue">Continue</string>
+    <string name="Enter_your_details_to_continue">Enter your details to continue.</string>
+
+
+
+</resources>

@@ -184,7 +184,7 @@ modifier = Modifier
                             currentScreen.value=Screen.Image
                             CircleOfColor4= circleColor
                         },
-                        onBackScreen = {currentScreen.value=Screen.Inbody
+                        onBackScreen = {currentScreen.value=Screen.Data
                             StanderColor3= CircleUnSelected
                         },
                         onSkip = {
@@ -196,7 +196,10 @@ modifier = Modifier
             Screen.Image ->{
                 PickingPhoto(
                     onNextScreen = { currentScreen.value=Screen.Succes }
-                    , onBackScreen = {}
+                    , onBackScreen = {
+                        currentScreen.value=Screen.Inbody
+                        CircleOfColor4= CircleUnSelected
+                    }
                 )
             }
             else ->{}

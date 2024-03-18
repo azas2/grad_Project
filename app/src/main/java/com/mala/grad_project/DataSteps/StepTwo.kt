@@ -46,8 +46,8 @@ fun DataScreen(
         Spacer30()
         OwenTextField(state =state2
             , onValueChange ={state2=it}
-            , holder ="What is your Weight"
-            , text ="What is your age?",
+            , holder ="Enter your weight"
+            , text ="What is your Weight?",
             isError = ChecktoError(state2)
         )
         Spacer30()

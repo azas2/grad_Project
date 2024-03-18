@@ -1,5 +1,8 @@
 package com.mala.grad_project.DataSteps
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -22,7 +25,11 @@ import com.mala.grad_project.compoableOfData.TwoButton
 import com.mala.grad_project.composables.Spacer50
 import com.mala.grad_project.ui.theme.hinttextColor
 
+private fun getFileName(uri: Uri): String {
 
+    return uri.pathSegments.lastOrNull()?:"Unknown"
+
+}
 //step3
 @Composable
 fun UploadInbodyScreen(
@@ -30,6 +37,10 @@ fun UploadInbodyScreen(
     onBackScreen:()->Unit,
     onSkip:()->Unit
 ) {
+    var selectedFileUri by remember { mutableStateOf<Uri?>(null) }
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        selectedFileUri = uri
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,7 +49,9 @@ fun UploadInbodyScreen(
     ) {
         Spacer50()
         var state by remember { mutableStateOf("") }
-        OwenTextFieldWithUploadIcon(state,{state=it},"Upload your inbody ","Upload your inbody")
+        OwenTextFieldWithUploadIcon(selectedFileUri?.let { getFileName(it) } ?: "",{state=it},"Upload your inbody ","Upload your inbody", onclick = {
+            launcher.launch("application/*")
+        })
         Text(modifier = Modifier
             .padding(start = 250.dp, end = 30.dp, top = 10.dp)
             .clickable { onSkip() },

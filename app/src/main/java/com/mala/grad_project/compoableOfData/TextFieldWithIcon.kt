@@ -35,7 +35,7 @@ fun OwenTextFieldWithUploadIcon(
     onValueChange: (String) -> Unit,
     holder: String,
     text: String,
-
+    onclick: ()->Unit
     ) {
     Column(
 
@@ -87,7 +87,7 @@ fun OwenTextFieldWithUploadIcon(
                 modifier = Modifier
                     .size(30.dp)
                     .clickable {
-                        //intent here
+                        onclick()
                     },
             ) },
         )

@@ -33,16 +33,16 @@ fun PlanChoose(){
                 numberOfMonth = 1,
                 price = 300,
                 onclick = {
-                    selectedPlan="plan1"
+                    selectedPlan="Plan 1"
                 }
             )
             PlanCard(
                 isSelected = selectedPlan == "Plan 2",
                 numberOfMonth = 3,
                 price = 850,
-               onclick = {
-                   selectedPlan="plan2"
-               }
+                onclick = {
+                    selectedPlan="Plan 2"
+                }
             )
         }
         Row(Modifier.fillMaxWidth()) {
@@ -51,9 +51,8 @@ fun PlanChoose(){
                 numberOfMonth = 6,
                 price = 1600,
                 onclick = {
-                    selectedPlan = "Plan 3 "
+                    selectedPlan="Plan 3"
                 }
-
             )
             PlanCard(
                 isSelected = selectedPlan == "Plan 4",
@@ -70,7 +69,4 @@ fun PlanChoose(){
 @Preview
 fun test_planChoose(){
     PlanChoose()
-}
-fun hello(){
-
 }

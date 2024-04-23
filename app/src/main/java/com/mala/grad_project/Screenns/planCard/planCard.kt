@@ -41,10 +41,10 @@ fun PlanCard(
     Column(
         modifier = Modifier
             .size(190.dp, height = 220.dp)
-            .padding(16.dp)
+            .padding(15.dp)
             .shadow(elevation = 10.dp)
-            .clickable { onclick}
-            .border(2.dp, if (isSelected) Color.Gray else Color.Transparent, RoundedCornerShape(16.dp))
+            .clickable { onclick()}
+            .border(2.dp, if (isSelected) circleColor else Color.Transparent, RoundedCornerShape(16.dp))
     ) {
         Box(
             modifier = Modifier

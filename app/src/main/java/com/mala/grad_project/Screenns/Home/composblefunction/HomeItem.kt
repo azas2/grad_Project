@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
@@ -66,7 +67,8 @@ fun HomeItem(/*make hir object*/) {
     var rating by remember { mutableStateOf(1f) }
     Box(modifier = Modifier
         .size(width = 390.dp, height = 85.dp)
-        .padding(start = 20.dp, top = 8.dp)){
+        .padding(start = 20.dp, top = 8.dp)
+        .shadow(elevation = 10.dp)){
         Card(
             Modifier
                 .size(width = 350.dp, height = 150.dp)

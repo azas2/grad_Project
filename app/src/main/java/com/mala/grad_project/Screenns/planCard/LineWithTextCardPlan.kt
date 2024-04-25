@@ -1,4 +1,4 @@
-package com.mala.grad_project.Screenns.CoachScreen.Conmposble
+package com.mala.grad_project.Screenns.planCard
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -8,32 +8,27 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mala.grad_project.Screenns.CoachScreen.Conmposble.singleHorizontalLine
 import com.mala.grad_project.ui.theme.hinttextColor
+
 @Composable
-fun LineTextViewChoachScreen(
+fun LineTextViewPlanScreen(
     text:String
 ){
     Row (
         modifier = Modifier.fillMaxWidth(),
         Arrangement.SpaceBetween
     ){
-        singleHorizontalLine(140)
+        singleHorizontalLine(80)
         Text(
             text =text,
-            fontSize = 14.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
-            color=hinttextColor,
+            color= hinttextColor,
             modifier = Modifier.weight(1f),
             textAlign = TextAlign.Center
         )
-        singleHorizontalLine(140)
+        singleHorizontalLine(80)
     }
-}
-@Preview
-@Composable
-fun show(){
-LineTextViewChoachScreen("hello")
 }

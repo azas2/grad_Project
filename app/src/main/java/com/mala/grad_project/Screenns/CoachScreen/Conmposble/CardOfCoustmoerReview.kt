@@ -31,23 +31,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mala.grad_project.R
-import com.mala.grad_project.Screenns.Home.composblefunction.StarRatingBar
 import com.mala.grad_project.ui.theme.hinttextColor
+import com.mala.grad_project.uitls.UserReview
 
 @Composable
 fun CardOfCustomerReview(
-    /*
-    nameOfUser:String,
-    image:String,
-    rateNumber:Int,
-    comment:String
-*/
+    items:UserReview
 ){
     var rating by remember { mutableStateOf(1f) }
         Column(
             modifier = Modifier
-                .size(320.dp, height = 210.dp)
+                .size(250.dp, height = 210.dp)
                 .padding(16.dp)
+                .shadow(elevation = 10.dp)
         ) {
             Box(
                 modifier = Modifier
@@ -61,18 +57,18 @@ fun CardOfCustomerReview(
                         Modifier.fillMaxWidth()
                     ) {
                         CircleCoachImage(
-                            painterResource(id = R.drawable.man), 50
+                            painterResource(id = items.image), 50
                         )
 
 
                         Column {
                             Text(
-                                text = "Ahmed alaa",
+                                text = "${items.nameOfUser}",
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(start = 20.dp, top = 20.dp)
                             )
-                            StarReview(maxStars =6, rating = 6.0f, onRatingChanged = {
+                            StarReview(maxStars =6, rating = items.rateNumber, onRatingChanged = {
                                 rating = it
                             },20,10 )
                         }
@@ -95,7 +91,7 @@ fun CardOfCustomerReview(
                     )
             ){
                 Text(
-                    text = "hello mr ahmed is gooddhfghjghdfjhggsjfbg ",
+                    text = "${items.comment} ",
                     fontSize = 15.sp,
                     textAlign = TextAlign.Start,
                     fontWeight = FontWeight.Bold,
@@ -112,11 +108,7 @@ fun CardOfCustomerReview(
 
 
 
-@Composable
-@Preview
-fun testme(){
-    CardOfCustomerReview()
-}
+
 @Composable
 fun blueSheapOfCard(){
     Image(

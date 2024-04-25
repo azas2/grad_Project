@@ -19,7 +19,12 @@ import com.mala.grad_project.ui.theme.circleColor
 @Composable
 fun CircleCoachImage(
     painter: Painter,
-    size:Int
+    size:Int,
+    paddingStart:Int?=null,
+    paddingEnd:Int?=null,
+    paddingTop:Int?=null,
+    paddingBottom:Int?=null
+
 ) {
 
     Box (contentAlignment = Alignment.TopStart){
@@ -32,7 +37,7 @@ fun CircleCoachImage(
             modifier = Modifier
                 .size(size.dp)
 
-                .padding(borderWidth)
+                .padding(start = paddingStart?.dp ?: 1.dp, end = paddingEnd?.dp ?:1.dp, top = paddingTop?.dp ?:1.dp, bottom = paddingBottom?.dp ?:1.dp)
 
 
                 .border(

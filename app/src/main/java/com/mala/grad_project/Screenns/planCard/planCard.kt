@@ -40,7 +40,7 @@ fun PlanCard(
 ){
     Column(
         modifier = Modifier
-            .size(190.dp, height = 220.dp)
+            .size(190.dp, height = 210.dp)
             .padding(15.dp)
             .shadow(elevation = 10.dp)
             .clickable { onclick()}

@@ -24,22 +24,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mala.grad_project.R
 import com.mala.grad_project.ui.theme.Sinupcolor
+import com.mala.grad_project.ui.theme.fontViewColor
 
 @Composable
-fun StarRatingBar(
+fun StarRatingBarCoach(
     maxStars: Int = 5,
     rating: Float,
     onRatingChanged: (Float) -> Unit,
-    paddingStart:Int,
-    paddingEnd:Int
+    paddingStart:Int?=null,
+    paddingEnd:Int?=null
 ) {
     val density = LocalDensity.current.density
-    val starSize = (6f * density).dp
+    val starSize = (8f * density).dp
     val starSpacing = (0.5f * density).dp
 
     Row(
         modifier = Modifier.selectableGroup()
-            .padding(start=98.dp),
+            .padding(start=paddingStart?.dp ?:1.dp),
         verticalAlignment = Alignment.CenterVertically
 
     ) {
@@ -66,14 +67,6 @@ fun StarRatingBar(
             }
         }
 
-        Text(modifier = Modifier
-            .padding(start =paddingStart.dp, end = paddingEnd.dp)
-            .clickable { /*go to signup*/ },
-            text ="View more",
-            fontSize = 10.sp,
-            fontWeight = FontWeight.Normal,
-            color = Color.Blue,
-            textDecoration = TextDecoration.Underline
-        )
+
     }
 }

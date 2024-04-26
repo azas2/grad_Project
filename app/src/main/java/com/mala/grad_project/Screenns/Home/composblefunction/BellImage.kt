@@ -15,7 +15,7 @@ fun BellImage(
 
     Image(
         painter = painter,
-        modifier = Modifier.size(40.dp)
+        modifier = Modifier.size(44.dp)
             .padding(bottom = 10.dp, end = 10.dp),
         contentDescription = null
     )

@@ -126,9 +126,8 @@ fun CoachScreen(
                 }
             }
         Spacer(modifier = Modifier.height(15.dp))
-        LineTextViewChoachScreen("Trainee reviews")
+        LineTextViewChoachScreen("My portfolio")
         Spacer(modifier = Modifier.height(15.dp))
-        LazyListWithHomeItems(reviewList)
         Spacer(modifier = Modifier.height(15.dp))
 
         }
@@ -143,17 +142,4 @@ fun CoachScreen(
 @Preview
 fun test_Coach(){
     CoachScreen()
-}
-@Composable
-fun LazyListWithHomeItems(items: List<UserReview>) {
-    LazyRow(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp) // Specify the height of the LazyRow
-            .padding(horizontal = 16.dp) // Add padding to the LazyRow
-    ) {
-        items(items) { item ->
-            CardOfCustomerReview(item)
-        }
-    }
 }

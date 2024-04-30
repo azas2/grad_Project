@@ -35,6 +35,7 @@ fun MenuSettings(
         modifier = Modifier
             .background(color = Color.Transparent)
             .fillMaxWidth()
+            .clickable { onClick() }
     )
     {
         Row (
@@ -51,7 +52,7 @@ fun MenuSettings(
                 color=hinttextColor,
                 modifier = Modifier.weight(1f)
                     .padding(start=10.dp, bottom =12.dp)
-                    .clickable { onClick() },
+                   ,
                 textAlign = TextAlign.Start
             )
         }

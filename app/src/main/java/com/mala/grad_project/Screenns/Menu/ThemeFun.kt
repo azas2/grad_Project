@@ -44,16 +44,19 @@ fun Theme(
             .background(color = Color.Transparent)
             .fillMaxWidth()
     ) {
-        Row(Modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxWidth()
+            .clickable(onClick = onThemeClicked)) {
             Image(
                 modifier = Modifier
                     .size(40.dp)
-                    .padding(start = 10.dp, top = 5.dp),
+                    .padding(start = 10.dp, top = 5.dp)
+                   ,
                 painter = painterResource(id = R.drawable.nightmode),
                 contentDescription = null
             )
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
+                    ,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -63,7 +66,7 @@ fun Theme(
                     color = hinttextColor,
                     modifier = Modifier
                         .padding(start = 10.dp, top = 5.dp)
-                        .clickable(onClick = onThemeClicked),
+                       ,
                     textAlign = TextAlign.Start
                 )
                 Row(Modifier.padding(end = 20.dp)) {
@@ -75,7 +78,7 @@ fun Theme(
                         color = hinttextColor,
                         modifier = Modifier
                             .padding(top = 15.dp, start = 20.dp)
-                            .clickable(onClick = onThemeClicked),
+                            .clickable(onClick = onSwitchClicked),
                         textAlign = TextAlign.Start
                     )
 
@@ -86,7 +89,7 @@ fun Theme(
                             onSwitchClicked()
                         },
                         colors = SwitchDefaults.colors(
-                            checkedThumbColor = circleColor,
+                            checkedThumbColor = Color.White,
                             checkedTrackColor = Color.Black,
                             uncheckedThumbColor = circleColor,
                             uncheckedTrackColor = Color.LightGray

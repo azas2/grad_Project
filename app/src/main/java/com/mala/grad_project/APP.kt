@@ -16,6 +16,6 @@ import com.mala.grad_project.presentation.screens.LoginSecond
 @Composable
 fun App(){
     Scaffold {
-
+        menuScreen()
     }
 }

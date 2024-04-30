@@ -2,6 +2,7 @@ package com.mala.grad_project.Screenns.subsciptions
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -41,8 +42,8 @@ fun CardOfSubscriptionActive(
 ){
     Card(
         modifier = Modifier
-            .width(250.dp)
-            .height(90.dp)
+            .width(260.dp)
+            .height(70.dp)
             .clip(RoundedCornerShape(5.dp))
             .shadow(elevation = 10.dp),
         colors = CardDefaults.cardColors(Color.White)
@@ -50,7 +51,8 @@ fun CardOfSubscriptionActive(
         Row(
             Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            Arrangement.SpaceBetween
         ) {
             Column {
                 Row {
@@ -70,30 +72,34 @@ fun CardOfSubscriptionActive(
                 }
                 Row{
                     Text(
+
                         text ="Package: ",
                         modifier = Modifier.padding(top=5.dp),
                         fontSize = 10.sp,
-                        color = circleColor
-
+                        color = circleColor,
+                        fontWeight = FontWeight.Bold
                     )
                     Text(
                         text ="numberOfMonth",
                         modifier = Modifier.padding(top=5.dp),
                         fontSize = 10.sp,
-                        color = hinttextColor
+                        color = hinttextColor,
+                       fontWeight = FontWeight.Bold
 
                     )
                 }
                 Row {
+
                     Image(
                         painter = painterResource(id = R.drawable.colock) ,
                         contentDescription =null,
-                        Modifier.size(20.dp)
-                            .padding(top=10.dp)
+                        Modifier
+                            .size(15.dp)
+                            .padding(top = 2.dp)
+
                     )
                     Text(
                         text ="state her",
-                        modifier = Modifier.padding(top=8.dp),
                         fontSize = 8.sp,
                         color = circleColor
 
@@ -101,6 +107,17 @@ fun CardOfSubscriptionActive(
                 }
 
             }
+
+            Column {
+                Row {
+                    Image(
+                        painter = painterResource(id = R.drawable.calander)
+                        , contentDescription =null,
+                        modifier = Modifier.size(10.dp)
+                    )
+                }
+            }
+           
         }
 
     }

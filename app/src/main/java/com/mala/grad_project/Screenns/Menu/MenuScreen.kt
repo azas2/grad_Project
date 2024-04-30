@@ -29,10 +29,8 @@ import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun menuScreen(
-    onclickProfile:()->Unit,
-    onclickTheme:()->Unit,
-    onclickAboutUs:()->Unit,
-    onclickLogout:()->Unit
+
+
 ){
     Column(
         modifier= Modifier
@@ -74,16 +72,16 @@ fun menuScreen(
 
         }
         Spacer(modifier = Modifier.height(30.dp))
-        MenuSettings(text="My profile", painter = painterResource(id = R.drawable.user), onClick = {onclickProfile()})
+        MenuSettings(text="My profile", painter = painterResource(id = R.drawable.user), onClick = {})
         Spacer(modifier = Modifier.height(15.dp))
         Theme(
-            onSwitchClicked = { onclickTheme() },
+            onSwitchClicked = {  },
             onThemeClicked = { /* Handle theme click */ }
         )
         Spacer(modifier = Modifier.height(15.dp))
-        MenuSettings(text="About us", painter = painterResource(id = R.drawable.informationbutton), onClick = {onclickAboutUs()})
+        MenuSettings(text="About us", painter = painterResource(id = R.drawable.informationbutton), onClick = {})
         Spacer(modifier = Modifier.height(15.dp))
-        MenuSettings(text="Log out", painter = painterResource(id = R.drawable.logout), onClick = {onclickLogout()})
+        MenuSettings(text="Log out", painter = painterResource(id = R.drawable.logout), onClick = {})
         Spacer(modifier = Modifier.height(15.dp))
 
     }

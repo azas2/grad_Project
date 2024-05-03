@@ -43,7 +43,7 @@ import com.mala.grad_project.uitls.UserReview
 
 @Composable
 fun CardOfCustomerReview(
-   // BeforeImge:Painter,
+    // BeforeImge:Painter,
     //AfterImage:Painter,
     // comment:String
 ){
@@ -66,7 +66,7 @@ fun CardOfCustomerReview(
             Row(
                 Modifier.wrapContentSize().padding(start=15.dp,top=10.dp),
 
-            ) {
+                ) {
 
 
 
@@ -81,7 +81,7 @@ fun CardOfCustomerReview(
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Normal,
                         color = circleColor
-                        )
+                    )
                     Image(
                         painter = painterResource(id = R.drawable.man),
                         contentDescription = "error image",

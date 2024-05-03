@@ -36,8 +36,11 @@ import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun PlanChoose() {
-    var selectedPlan by remember { mutableStateOf("") }
+    var selectedPlan by remember { mutableStateOf(0) }
     var rating by remember { mutableStateOf(1f) }
+    val onPlanSelected: (Int) -> Unit = { planId ->
+        selectedPlan = planId
+    }
 
     Column(
         modifier = Modifier
@@ -124,40 +127,47 @@ fun PlanChoose() {
             horizontalAlignment=Alignment.CenterHorizontally
         ) {
 
-            Row {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ){
                 PlanCard(
-                    isSelected = selectedPlan == "Plan 1",
-                    numberOfMonth = 1,
-                    price = 300,
-                    onclick = {
-                        selectedPlan = "Plan 1"
-                    }
+                    onPlanSelected = onPlanSelected,
+                    listOfPackage = packeges( isSelected = selectedPlan == 1,
+                        numberOfMonth = 1,
+                        price = 300,
+                        id =1
+                    )
                 )
                 PlanCard(
-                    isSelected = selectedPlan == "Plan 2",
-                    numberOfMonth = 3,
-                    price = 850,
-                    onclick = {
-                        selectedPlan = "Plan 2"
-                    }
+                    onPlanSelected = onPlanSelected,
+                    listOfPackage = packeges( isSelected = selectedPlan == 2,
+                        numberOfMonth = 3,
+                        price = 800,
+                        id =2
+                    )
                 )
             }
-            Row() {
+            Row(
+
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
                 PlanCard(
-                    isSelected = selectedPlan == "Plan 3",
-                    numberOfMonth = 6,
-                    price = 1600,
-                    onclick = {
-                        selectedPlan = "Plan 3"
-                    }
+                    onPlanSelected = onPlanSelected,
+                    listOfPackage = packeges( isSelected = selectedPlan == 3,
+                        numberOfMonth =6,
+                        price = 1600,
+                        id =3
+                    )
                 )
                 PlanCard(
-                    isSelected = selectedPlan == "Plan 4",
-                    numberOfMonth = 12,
-                    price = 3000,
-                    onclick = {
-                        selectedPlan = "Plan 4"
-                    }
+                    onPlanSelected = onPlanSelected,
+                    listOfPackage = packeges( isSelected = selectedPlan == 4,
+                        numberOfMonth = 12,
+                        price = 3000,
+                        id =4
+                    )
                 )
             }
         }

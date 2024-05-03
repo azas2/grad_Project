@@ -3,6 +3,7 @@ package com.mala.grad_project.Screenns.planCard
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,78 +33,67 @@ import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun PlanCard(
-    isSelected: Boolean,
-    numberOfMonth:Int,
-     price:Int,
-    onclick: () -> Unit
-
-){
+    listOfPackage: packeges,
+    onPlanSelected: (Int) -> Unit
+) {
     Column(
         modifier = Modifier
             .size(190.dp, height = 210.dp)
             .padding(15.dp)
             .shadow(elevation = 10.dp)
-            .clickable { onclick()}
-            .border(2.dp, if (isSelected) circleColor else Color.Transparent, RoundedCornerShape(16.dp))
+            .clickable { onPlanSelected(listOfPackage.id) }
+            .border(
+                width = 2.dp,
+                color = if (listOfPackage.isSelected) circleColor else Color.Transparent,
+                shape = RoundedCornerShape(16.dp)
+            )
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1.5f)
-                .background(hinttextColor, RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                .height(90.dp)
+                .background(Color(0xFF003566), RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
         ) {
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .height(90.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "$numberOfMonth Month",
-                    textAlign = TextAlign.Center,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color=Color.White,
-                    modifier = Modifier.padding(top=50.dp)
-                )
-
-            }
-
+            Text(
+                text = "${listOfPackage.numberOfMonth} Month",
+                textAlign = TextAlign.Center,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.padding(top = 30.dp, start = 30.dp)
+            )
         }
-
 
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f)
-
-                .background(
-                    Color.White,
-                    RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
-                )
-        ){
-            Row (
-                modifier = Modifier.fillMaxWidth()
-                    .padding(top=20.dp, start = 40.dp)
-            ){
+                .height(90.dp)
+                .background(Color.White, RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
+                .padding(top = 20.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
                 Text(
-                    text = "$price",
+                    text = "${listOfPackage.price}",
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color= hinttextColor
+                    color = hinttextColor
                 )
                 Text(
                     text = "L.E",
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color= hinttextColor,
-                    modifier =Modifier.padding(start = 5.dp, end = 30.dp)
+                    color = hinttextColor,
+                    modifier = Modifier.padding(start = 5.dp)
                 )
             }
         }
     }
 }
+
 
 

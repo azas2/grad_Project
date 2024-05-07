@@ -15,7 +15,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -26,24 +28,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mala.grad_project.R
+import com.mala.grad_project.composables.Spacer30
+import com.mala.grad_project.ui.theme.brightYellow
 import com.mala.grad_project.ui.theme.circleColor
 import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun CardOfSubscriptionActive(
-    /*
     captainName:String,
     packageNumber:String,
     state:String,
     startDate:String,
-    endDate:String
-
-     */
+    endDate:String,
 ){
     Card(
         modifier = Modifier
             .width(260.dp)
-            .height(70.dp)
+            .height(80.dp)
             .clip(RoundedCornerShape(5.dp))
             .shadow(elevation = 10.dp),
         colors = CardDefaults.cardColors(Color.White)
@@ -64,7 +65,7 @@ fun CardOfSubscriptionActive(
                         fontSize = 15.sp
                     )
                     Text(
-                        text ="nameOfCaptain",
+                        text =captainName,
                         fontWeight = FontWeight.Bold,
                         color = hinttextColor,
                         fontSize = 15.sp
@@ -80,7 +81,7 @@ fun CardOfSubscriptionActive(
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text ="numberOfMonth",
+                        text =packageNumber,
                         modifier = Modifier.padding(top=5.dp),
                         fontSize = 10.sp,
                         color = hinttextColor,
@@ -88,7 +89,9 @@ fun CardOfSubscriptionActive(
 
                     )
                 }
-                Row {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically
+                ){
 
                     Image(
                         painter = painterResource(id = R.drawable.colock) ,
@@ -99,31 +102,22 @@ fun CardOfSubscriptionActive(
 
                     )
                     Text(
-                        text ="state her",
+                        text =state,
                         fontSize = 8.sp,
-                        color = circleColor
+                        color = brightYellow
 
                     )
                 }
 
             }
-
             Column {
-                Row {
-                    Image(
-                        painter = painterResource(id = R.drawable.calander)
-                        , contentDescription =null,
-                        modifier = Modifier.size(10.dp)
-                    )
-                }
+                Spacer30()
+                Calender(typeOfText = "Start date", date =startDate, painterResource(id = R.drawable.calander), iconSize = 15, fontsize = 8 )
+                Calender(typeOfText = "Start date", date =endDate, painterResource(id = R.drawable.calander), iconSize = 15, fontsize = 8 )
+
             }
-           
+
         }
 
     }
-}
-@Composable
-@Preview
-fun showMe(){
-    CardOfSubscriptionActive()
 }

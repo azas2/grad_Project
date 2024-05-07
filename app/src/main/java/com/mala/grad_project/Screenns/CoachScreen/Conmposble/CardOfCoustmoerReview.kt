@@ -50,7 +50,7 @@ fun CardOfCustomerReview(
 
     Column(
         modifier = Modifier
-            .size(width=170.dp, height = 160.dp)
+            .size(width=180.dp, height = 180.dp)
             .padding(16.dp)
             .shadow(elevation = 10.dp)
     ) {
@@ -72,7 +72,7 @@ fun CardOfCustomerReview(
 
                 Column (
                     horizontalAlignment=Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(end = 10.dp)
+                    modifier = Modifier.padding(end = 15.dp)
                 ){
 
                     Text(
@@ -128,7 +128,7 @@ fun CardOfCustomerReview(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
-
+                .weight(0.9f)
                 .background(
                     hinttextColor,
                     RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)

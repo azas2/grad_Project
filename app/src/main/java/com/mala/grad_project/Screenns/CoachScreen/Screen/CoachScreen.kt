@@ -89,13 +89,13 @@ fun CoachScreen(
                 Arrangement.Center,
                 Alignment.CenterHorizontally
             ) {
-                CircleCoachImage(painter= painterResource(id = R.drawable.man) , size =230)
+                CircleCoachImage(painter= painterResource(id = R.drawable.man) , size =150)
                     Text(
                         text = "Captain:ahmed Alaa",
                         Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center,
-                        fontSize =25.sp,
+                        fontSize =20.sp,
                         fontWeight = FontWeight.Bold
                     )
                     StarRatingBarCoach(maxStars =6, rating =6f, onRatingChanged = {
@@ -129,7 +129,7 @@ fun CoachScreen(
         LineTextViewChoachScreen("My portfolio")
         Spacer(modifier = Modifier.height(15.dp))
         Spacer(modifier = Modifier.height(15.dp))
-
+        CardOfCustomerReview()
         }
 
 

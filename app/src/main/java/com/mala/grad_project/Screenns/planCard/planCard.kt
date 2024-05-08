@@ -33,20 +33,14 @@ import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun PlanCard(
-    listOfPackage: packeges,
-    onPlanSelected: (Int) -> Unit
+
 ) {
     Column(
         modifier = Modifier
             .size(190.dp, height = 210.dp)
             .padding(15.dp)
             .shadow(elevation = 10.dp)
-            .clickable { onPlanSelected(listOfPackage.id) }
-            .border(
-                width = 2.dp,
-                color = if (listOfPackage.isSelected) circleColor else Color.Transparent,
-                shape = RoundedCornerShape(16.dp)
-            )
+            .clickable { }
     ) {
         Box(
             modifier = Modifier
@@ -55,7 +49,7 @@ fun PlanCard(
                 .background(Color(0xFF003566), RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
         ) {
             Text(
-                text = "${listOfPackage.numberOfMonth} Month",
+                text = "listOfPackage.numberOfMonth Month",
                 textAlign = TextAlign.Center,
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Bold,
@@ -76,7 +70,7 @@ fun PlanCard(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "${listOfPackage.price}",
+                    text = "listOfPackage.price",
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,

@@ -47,7 +47,7 @@ fun TwoButton(
                 modifier = Modifier
                     .size(40.dp)
                     .padding(top = 5.dp),
-                painter = painterResource(id = R.drawable.back),
+                painter = painterResource(id = R.drawable.payment),
                 contentDescription = "image error",
                 tint = circleColor
             )

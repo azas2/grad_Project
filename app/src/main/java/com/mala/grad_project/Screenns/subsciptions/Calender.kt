@@ -1,5 +1,6 @@
 package com.mala.grad_project.Screenns.subsciptions
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -39,11 +40,11 @@ fun Calender(
 
         verticalAlignment = Alignment.CenterVertically
     ){
-      Image(
-          painter= calenderImage
-          ,contentDescription = null,
-          Modifier.size(iconSize.dp)
-      )
+        Image(
+            painter= calenderImage
+            ,contentDescription = null,
+            Modifier.size(iconSize.dp)
+        )
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(2.dp)

@@ -51,27 +51,6 @@ fun ExerSizeScreen(
     ) {
         var selectedDay by remember { mutableStateOf<String?>(null) }
 
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .background(hinttextColor)
-        ) {
-            Column {
-
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(start = 10.dp),
-                    verticalAlignment = Alignment.Bottom,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    CircleCoachImage(painterResource(id = R.drawable.man), 55)
-                    BellImage(painterResource(id = R.drawable.run))
-                }
-
-            }
-        }
         CoachData(
             showPlansExercises.coach.fname,
             lastname = showPlansExercises.coach.lname,

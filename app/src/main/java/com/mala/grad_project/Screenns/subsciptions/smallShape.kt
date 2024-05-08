@@ -35,7 +35,7 @@ fun SmallShape(
                 .size(width = 39.dp, height = 10.dp)
                 ,
             text =date,
-            fontSize =6.sp,
+            fontSize =7.sp,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF003566)

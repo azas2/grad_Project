@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
 import com.mala.grad_project.Screenns.subsciptions.PlanUIScreen
 import com.mala.grad_project.Screenns.subsciptions.paymentScreen
+import com.mala.grad_project.TextShape.OutlinedCardWithTextAndButton
 import com.mala.grad_project.data.model.Coach
 import com.mala.grad_project.data.model.Exercise
 import com.mala.grad_project.data.model.Msg
@@ -60,6 +61,6 @@ fun App() {
 
 
     Scaffold {
-        PlanUIScreen(fakeData)
+        OutlinedCardWithTextAndButton()
     }
 }

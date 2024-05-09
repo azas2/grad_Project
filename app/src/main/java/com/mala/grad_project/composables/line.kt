@@ -4,6 +4,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +17,7 @@ import com.mala.grad_project.ui.theme.BackGroundLetgo
 
 @Composable
 fun line(color:Color){
-    Canvas(modifier = androidx.compose.ui.Modifier.height(56.dp)){
+    Canvas(modifier = androidx.compose.ui.Modifier.height(40.dp).padding(bottom = 3.dp, end = 4.dp)){
         val canvasWidth = size.width
         val canvasHeight = size.height
         drawLine(

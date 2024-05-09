@@ -1,10 +1,7 @@
 package com.mala.grad_project.Screenns.subsciptions
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,28 +18,22 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mala.grad_project.R
 import com.mala.grad_project.Screenns.CoachScreen.Conmposble.LineTextViewChoachScreen
-import com.mala.grad_project.Screenns.Home.composblefunction.BellImage
-import com.mala.grad_project.Screenns.Home.composblefunction.CircleCoachImage
-import com.mala.grad_project.domain.Entity.Exercise
-import com.mala.grad_project.domain.Entity.show_plans_exercises
+import com.mala.grad_project.data.model.Exercise
+import com.mala.grad_project.data.model.show_plans_exercises
 
 import com.mala.grad_project.ui.theme.brightYellow
-import com.mala.grad_project.ui.theme.hinttextColor
 
 
 @Composable
 fun ExerSizeScreen(
-    showPlansExercises: show_plans_exercises
+    getPlansResponse: show_plans_exercises
 ) {
     Column(
         Modifier
@@ -52,11 +43,11 @@ fun ExerSizeScreen(
         var selectedDay by remember { mutableStateOf<String?>(null) }
 
         CoachData(
-            showPlansExercises.coach.fname,
-            lastname = showPlansExercises.coach.lname,
-            "${showPlansExercises.`package`.number_of_months}",
-            startDate = showPlansExercises.`package`.start_date,
-            endDate = showPlansExercises.`package`.end_date,
+            getPlansResponse.coach.fname,
+            lastname = getPlansResponse.coach.lname,
+            "${getPlansResponse.`package`.number_of_months}",
+            startDate = getPlansResponse.`package`.start_date,
+            endDate = getPlansResponse.`package`.end_date,
             painter = null
         )
 
@@ -69,7 +60,7 @@ fun ExerSizeScreen(
             fontWeight = FontWeight.Bold,
         )
         HorizontalDivider()
-        val daysOfWeek = showPlansExercises.msg.map { it.day.toLowerCase() to it.day.capitalize() }
+        val daysOfWeek = getPlansResponse.msg.map { it.day.toLowerCase() to it.day.capitalize() }
 
 
 
@@ -87,7 +78,7 @@ fun ExerSizeScreen(
         Spacer(modifier = Modifier.height(20.dp))
         LineTextViewChoachScreen("Shoulder Day")
         selectedDay?.let { day ->
-            val exercisesForSelectedDay = showPlansExercises.msg
+            val exercisesForSelectedDay = getPlansResponse.msg
                 .find { it.day.equals(day, ignoreCase = true) }
                 ?.exercises ?: emptyList()
             DisplayExercisesForDay(selectedDay = day, exercises = exercisesForSelectedDay)

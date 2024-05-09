@@ -23,13 +23,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mala.grad_project.ui.theme.blue1
 import com.mala.grad_project.ui.theme.blue2
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PaymentScreen(painter: Painter, type:String, isSelected:Boolean, onSelected:()->Unit){
+fun Payment(painter: Painter, type:String, isSelected:Boolean, onSelected:()->Unit){
     var backColor by remember { mutableStateOf(Color.White) }
-    var textColor by remember { mutableStateOf(blue2) }
+    var textColor by remember { mutableStateOf(blue1) }
 
     Card(
         modifier = Modifier.size(height =200.dp, width = 180.dp),

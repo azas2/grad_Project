@@ -1,5 +1,6 @@
 package com.mala.grad_project.Screenns.subsciptions
 
+import CardSubscraptionRejected
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,12 +20,12 @@ import androidx.compose.ui.unit.dp
 import com.mala.grad_project.R
 import com.mala.grad_project.Screenns.Home.composblefunction.BellImage
 import com.mala.grad_project.Screenns.Home.composblefunction.CircleCoachImage
-import com.mala.grad_project.domain.Entity.show_plans_exercises
+import com.mala.grad_project.data.model.show_plans_exercises
 import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun PlanUIScreen(
-    showPlansExercises: show_plans_exercises
+    getPlansResponse: show_plans_exercises
 ) {
 
     Column(
@@ -55,11 +56,12 @@ fun PlanUIScreen(
 
             Spacer(modifier = Modifier.height(10.dp))
         }
-        when(showPlansExercises.payment_status){
-            "null" -> CardOfSubscription(showPlansExercises)
-            "ACCEPTED" -> CardSubscraptionPending(showPlansExercises)
-
-            "COMPLETED" -> ExerSizeScreen(showPlansExercises)
+        when(getPlansResponse.payment_status){
+            "null" -> CardOfSubscription(getPlansResponse)
+            "ACCEPTED" -> CardSubscraptionPending(getPlansResponse)
+            "REJECTED" -> CardSubscraptionRejected(getPlansResponse)
+            "UNSUBSCRIBED" ->TextUnSupscribed(getPlansResponse)
+            "COMPLETED" -> ExerSizeScreen(getPlansResponse)
         }
 
     }

@@ -25,15 +25,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mala.grad_project.R
-import com.mala.grad_project.domain.Entity.show_plans_exercises
-import com.mala.grad_project.ui.theme.brightYellow
-import com.mala.grad_project.ui.theme.circleColor
+import com.mala.grad_project.data.model.show_plans_exercises
+import com.mala.grad_project.ui.theme.blue1
 import com.mala.grad_project.ui.theme.darkYellow
-import com.mala.grad_project.ui.theme.hinttextColor
 
 @Composable
 fun CardSubscraptionPending(
-    showPlansExercises: show_plans_exercises
+    getPlansResponse: show_plans_exercises
 ){
     Box (
         Modifier
@@ -65,13 +63,13 @@ fun CardSubscraptionPending(
                         text ="Captain: ",
 
                         fontWeight = FontWeight.Bold,
-                        color = hinttextColor,
+                        color = blue1,
                         fontSize = 15.sp
                     )
                     Text(
-                        text ="${showPlansExercises.coach.fname} ${showPlansExercises.coach.lname}",
+                        text ="${getPlansResponse.coach.fname} ${getPlansResponse.coach.lname}",
                         fontWeight = FontWeight.Bold,
-                        color = hinttextColor,
+                        color = blue1,
                         fontSize = 15.sp
                     )
                 }
@@ -85,10 +83,10 @@ fun CardSubscraptionPending(
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text ="${showPlansExercises.`package`.number_of_months} Months",
+                        text ="${getPlansResponse.`package`.number_of_months} Months",
                         modifier = Modifier.padding(top=5.dp),
                         fontSize = 15.sp,
-                        color = hinttextColor,
+                        color = blue1,
                        fontWeight = FontWeight.Bold
 
                     )
@@ -96,7 +94,7 @@ fun CardSubscraptionPending(
                 Row (
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (showPlansExercises.payment_status == "ACCEPTED"){
+                    if (getPlansResponse.payment_status == "ACCEPTED"){
                         Image(
                             painter = painterResource(id = R.drawable.payment),
                             contentDescription = null,
@@ -129,8 +127,8 @@ fun CardSubscraptionPending(
 
             }
             Column {
-                Calender(typeOfText = "Start date", date =showPlansExercises.`package`.start_date, painterResource(id = R.drawable.calander), iconSize = 20, fontsize =10 )
-                Calender(typeOfText = "End date", date =showPlansExercises.`package`.end_date, painterResource(id = R.drawable.truecalander), iconSize = 20, fontsize = 10 )
+                Calender(typeOfText = "Start date", date =getPlansResponse.`package`.start_date, painterResource(id = R.drawable.calander), iconSize = 20, fontsize =10 )
+                Calender(typeOfText = "End date", date =getPlansResponse.`package`.end_date, painterResource(id = R.drawable.truecalander), iconSize = 20, fontsize = 10 )
 
             }
 

@@ -3,8 +3,11 @@ package com.mala.grad_project.Screenns.subsciptions
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,7 +30,10 @@ import com.mala.grad_project.R
 import com.mala.grad_project.composables.Spacer30
 import com.mala.grad_project.composables.Spacer50
 import com.mala.grad_project.ui.theme.GenderBackGround
+import com.mala.grad_project.ui.theme.blue1
+import com.mala.grad_project.ui.theme.brightYellow
 import com.mala.grad_project.ui.theme.circleColor
+import com.mala.grad_project.ui.theme.darkYellow
 
 
 enum class payWay {
@@ -47,40 +53,39 @@ fun paymentScreen(){
             .padding(10.dp)
         , horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Spacer30()
+        Spacer(modifier = Modifier.height(30.dp))
+
         Text(
-            text = "What is your gender?",
+            text = "Select payment method",
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold
         )
-        Spacer30()
-        com.mala.grad_project.compoableOfData.CardOfGender(painter = painterResource(id = R.drawable.visa), type = "Visa",isSelected =selectedPayment==payWay.VISA ){
+    Spacer(modifier = Modifier.height(30.dp))
+        Payment(painter = painterResource(id = R.drawable.visa), type = "Visa",isSelected =selectedPayment==payWay.VISA ){
             selectedPayment = payWay.VISA
 
 
         }
-        Spacer30()
-        com.mala.grad_project.compoableOfData.CardOfGender(painter = painterResource(id = R.drawable.paybal), type="Female",isSelected = selectedPayment== payWay.PAYBAL){
+        Spacer(modifier = Modifier.height(30.dp))
+        Payment(painter = painterResource(id = R.drawable.paybal), type="Paypal",isSelected = selectedPayment== payWay.PAYBAL){
             selectedPayment= payWay.PAYBAL
 
         }
-        Spacer50()
-        Button(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 230.dp, end = 20.dp),
-            onClick = {
-                if(selectedPayment== payWay.Unspecified){
-                    Toast.makeText(context,"select your payment way please", Toast.LENGTH_SHORT).show()
-                }else{
-
-                }
-            }
-            ,    colors = ButtonDefaults.buttonColors(
-                circleColor,
-                contentColor = GenderBackGround
-            )
-        ) {
-            Text(text = "next", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(50.dp))
+        Row{
+            outlineButton(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(2.dp),
+                text =" Back",
+                )
+            BlueButton(
+                onClick = { /*TODO*/ },
+                Modifier
+                    .weight(1f)
+                    .padding(2.dp),
+                text = "Continue")
         }
     }
 

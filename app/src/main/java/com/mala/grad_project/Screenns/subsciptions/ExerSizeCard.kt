@@ -39,18 +39,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.ImageLoader
-import coil.compose.rememberAsyncImagePainter
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import coil.request.ImageRequest
-import coil.size.Size
-import com.mala.grad_project.domain.Entity.Exercise
 import com.mala.grad_project.ui.theme.blue2
 import com.mala.grad_project.ui.theme.brightYellow
 
 import androidx.compose.ui.platform.LocalDensity
 import coil.ComponentRegistry
 import coil.compose.rememberImagePainter
+import com.mala.grad_project.data.model.Exercise
 
 @Composable
 fun ExerSizeCard(
@@ -73,12 +70,6 @@ fun ExerSizeCard(
                 .padding(5.dp)
         ){
 
-
-// Animated visibility will eventually remove the item from the composition once the animation has finished.
-            AnimatedVisibility(visible) {
-                // your composable here
-                // ...
-            }
             Box (
                 Modifier.padding(top=30.dp)
             ){

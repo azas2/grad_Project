@@ -1,4 +1,4 @@
-package com.mala.grad_project.domain.Entity
+package com.mala.grad_project.data.model
 
 data class Package(
     val end_date: String,

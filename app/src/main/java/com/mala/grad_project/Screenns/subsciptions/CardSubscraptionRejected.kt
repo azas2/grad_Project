@@ -1,10 +1,14 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -24,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mala.grad_project.R
 import com.mala.grad_project.Screenns.subsciptions.Calender
+import com.mala.grad_project.Screenns.subsciptions.CalenderCoustemSize
 import com.mala.grad_project.data.model.show_plans_exercises
 import com.mala.grad_project.ui.theme.blue1
 import com.mala.grad_project.ui.theme.brightYellow
@@ -33,23 +38,30 @@ import com.mala.grad_project.ui.theme.darkYellow
 fun CardSubscraptionRejected(
     getPlansResponse: show_plans_exercises
 ){
-    Box (
-        Modifier.padding(10.dp)
-            .shadow(elevation = 10.dp)
-            .clickable {
+    Column (
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
+        Arrangement.Center
 
-            }
+    ){
+    Box (
+        Modifier
+            .padding(10.dp)
+            .shadow(elevation = 20.dp)
+            
     ){
 
 
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight()
+                .height(200.dp)
                 .clip(RoundedCornerShape(5.dp))
             ,
             colors = CardDefaults.cardColors(Color.White)
         ) {
+            Spacer(modifier = Modifier.height(50.dp))
             Row(
                 Modifier
                     .fillMaxWidth()
@@ -91,20 +103,22 @@ fun CardSubscraptionRejected(
                         )
                     }
                     Row (
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         if (getPlansResponse.payment_status == "REJECTED"){
                             Image(
                                 painter = painterResource(id = R.drawable.remove),
                                 contentDescription = null,
                                 Modifier
-                                    .size(22.dp)
+                                    .size(25.dp)
                                     .padding(top = 2.dp)
 
                             )
+                            Spacer(modifier = Modifier.height(10.dp))
                             Text(
                                 text = "Rejected",
-                                fontSize = 10.sp,
+                                fontSize = 15.sp,
                                 color = brightYellow
 
                             )
@@ -113,13 +127,14 @@ fun CardSubscraptionRejected(
 
                 }
                 Column {
-                    Calender(typeOfText = "Start date", date =getPlansResponse.`package`.start_date, painterResource(id = R.drawable.calander), iconSize = 20, fontsize =10 )
-                    Calender(typeOfText = "End date", date =getPlansResponse.`package`.end_date, painterResource(id = R.drawable.truecalander), iconSize = 20, fontsize = 10 )
+                    CalenderCoustemSize(typeOfText = "Start date", date =getPlansResponse.`package`.start_date, painterResource(id = R.drawable.calander), iconSize = 20, fontsize =10 )
+                    CalenderCoustemSize(typeOfText = "End date", date =getPlansResponse.`package`.end_date, painterResource(id = R.drawable.truecalander), iconSize = 20, fontsize = 10 )
 
                 }
 
             }
 
         }
+    }
     }
 }

@@ -31,14 +31,15 @@ fun PlanUIScreen(
     Column(
         Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.onPrimary)
+            .background(MaterialTheme.colorScheme.onPrimary),
     ) {
 
         Box(
             Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .background(hinttextColor)
+                .background(hinttextColor),
+
         ) {
             Column {
 

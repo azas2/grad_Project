@@ -24,8 +24,8 @@ fun App() {
         coach = Coach("Atef", "Mohamed", "Coaches/17148580687589.jpg"),
         error_msg = "",
         id = 1,
-        `package` = Package(number_of_months = 1, start_date = "2024-04-23", end_date = "2024-06-08 19:15:10"),
-        payment_status = "COMPLETED",
+        `package` = Package(number_of_months = 1, start_date = "2024-04-23", end_date = "2024-06-08 "),
+        payment_status = "UNSUBSCRIBED",
         status = false,
         msg = listOf(
             Msg(

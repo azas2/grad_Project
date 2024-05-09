@@ -22,6 +22,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Colors
 import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Send
@@ -32,6 +33,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -46,8 +51,12 @@ import com.mala.grad_project.ui.theme.darkYellow
 @Composable
 fun OutlinedCardWithTextAndButton(
    buttonText: String,
-    onButtonClick: () -> Unit
+    onButtonClick: () -> Unit,
+   onMessageChange: (String) -> Unit
+
 ) {
+    var message by remember { mutableStateOf("") }
+
     Box(modifier = Modifier.padding(5.dp)){
     Card(
         shape = RoundedCornerShape(50.dp),
@@ -91,14 +100,14 @@ fun OutlinedCardWithTextAndButton(
                         ){
                             Icon(Icons.Filled.Add,"")
                         }
-                        Text(
-                            text = "Type Message",
-                            fontSize =13.sp,
-                            fontWeight = FontWeight.Normal,
+                        TextField(
+                            value = message,
+                            onValueChange = onMessageChange ,
                             modifier = Modifier
                                 .padding(top = 5.dp, start = 5.dp)
                                 .wrapContentWidth(),
-                            textAlign = TextAlign.Center
+                            placeholder = { Text("Type Message", textAlign = TextAlign.Center) },
+
                         )
                     }
                 }

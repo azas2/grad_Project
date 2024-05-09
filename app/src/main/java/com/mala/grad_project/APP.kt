@@ -12,6 +12,7 @@ import com.mala.grad_project.data.model.Exercise
 import com.mala.grad_project.data.model.Msg
 import com.mala.grad_project.data.model.Package
 import com.mala.grad_project.data.model.show_plans_exercises
+import com.mala.grad_project.newCardExersize.NewCardExersize
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -60,7 +61,7 @@ fun App() {
 
 
 
-    Scaffold {
-        OutlinedCardWithTextAndButton()
+    Scaffold{
+    NewCardExersize()
     }
 }

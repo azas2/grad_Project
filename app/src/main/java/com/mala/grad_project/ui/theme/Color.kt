@@ -19,7 +19,7 @@ val headerOutTextFieldColor=Color(0xFF001D3D)
 val CircleUnSelected=Color(0xFFEFF0F6)
 val GenderBackGround=Color(0xFF003566)
 val fontColor=Color(0xFF000814)
-val fontOfSearch=Color(0xFFADB5BD)
+val offwhite=Color(0x80E7E8E9)
 val fontViewColor=Color(0xFF001D3D)
 
 val brightYellow = Color(0xFFFFD60A)

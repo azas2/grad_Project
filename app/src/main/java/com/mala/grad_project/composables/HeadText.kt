@@ -13,7 +13,7 @@ import com.mala.grad_project.ui.theme.headerOutTextFieldColor
 
 @Composable
 fun HeadText(text:String){
-    Text(modifier = Modifier.padding(start = 10.dp),
+    Text(modifier = Modifier.padding(start=22.dp, bottom = 5.dp,top=5.dp),
         text= text,
         color = headerOutTextFieldColor,
         fontSize = 16.sp,

@@ -62,6 +62,6 @@ fun App() {
 
 
     Scaffold{
-    NewCardExersize()
+        OutlinedCardWithTextAndButton()
     }
 }

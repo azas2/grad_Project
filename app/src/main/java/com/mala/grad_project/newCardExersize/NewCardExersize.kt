@@ -1,8 +1,10 @@
 package com.mala.grad_project.newCardExersize
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,49 +27,41 @@ import com.mala.grad_project.ui.theme.darkYellow
 import com.mala.grad_project.ui.theme.moreBrightYellow
 
 @Composable
-fun NewCardExersize(){
-    Box(modifier = Modifier
-        .size(300.dp)
-        .padding(10.dp)){
+fun NewCardExersize() {
     Box(
         modifier = Modifier
-            .size(250.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color.White,
-                        moreBrightYellow.copy(alpha = 0.9f)
+            .size(width = 300.dp, height = 250.dp)
+            .padding(10.dp)
+
+    ) {
+        // Background Box with blur effect
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(20.dp))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color.White,
+                            moreBrightYellow
+                        )
                     )
                 )
+                .blur(radius = 50.dp)
+        )
 
-            )
-            .blur(radius = 40.dp)
-    ) {
+        // Foreground content
         Column(
             modifier = Modifier
-                .size(250.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxSize()
+                .padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-
-                Box(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .shadow(elevation = 20.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(Color.White),
-
-
-                ){
-
-                }
-            }
+            ExersizeGifCard()
         }
     }
-
-
-
-    }
+}
 
 
 @Composable

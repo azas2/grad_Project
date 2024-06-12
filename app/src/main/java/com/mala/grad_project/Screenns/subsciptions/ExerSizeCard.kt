@@ -73,7 +73,6 @@ fun ExerSizeCard(
             Box (
                 Modifier.padding(top=30.dp)
             ){
-                GifImage("R.drawable.",visible = true)
 
             }
                 Column(
@@ -136,43 +135,5 @@ fun ExerSizeCard(
 
         Divider(color = Color.Black, thickness = 1.dp, modifier = Modifier.padding(horizontal = 8.dp))
 
-    }
-}
-@Composable
-fun GifImage(
-    exersize: String,
-    visible: Boolean
-) {
-    val density = LocalDensity.current
-    val context = LocalContext.current
-    val imageLoader = ImageLoader.Builder(context)
-        .components(fun ComponentRegistry.Builder.() {
-            if (SDK_INT >= 28) {
-                add(ImageDecoderDecoder.Factory())
-            } else {
-                add(GifDecoder.Factory())
-            }
-        })
-        .build()
-
-    AnimatedVisibility(
-        visible = visible,
-        enter = slideInVertically(
-            initialOffsetY = { with(density) { -40.dp.roundToPx() } }
-        ) + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
-        exit = slideOutVertically() + shrinkVertically() + fadeOut()
-    ) {
-        Image(
-            painter = rememberImagePainter(
-                data = exersize,
-                imageLoader = imageLoader
-            ),
-            contentDescription = null,
-            modifier = Modifier
-                .size(100.dp)
-                .clip(RoundedCornerShape(30.dp))
-                .background(Color.Gray)
-                .padding(top = 10.dp)
-        )
     }
 }

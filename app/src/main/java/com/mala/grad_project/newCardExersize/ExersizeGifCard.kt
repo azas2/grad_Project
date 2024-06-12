@@ -44,7 +44,7 @@ fun ExersizeGifCard(){
             .shadow(elevation = 30.dp)
     ){
         Card (
-            modifier = Modifier.size(width =205.dp, height = 180.dp),
+            modifier = Modifier.size(width =200.dp, height = 150.dp),
             colors=CardDefaults.cardColors(
                 Color.White
             )
@@ -98,7 +98,7 @@ fun GifImage(
             ),
             contentDescription = null,
             modifier = Modifier
-                .size(180.dp)
+                .size(200.dp)
                 .clip(RoundedCornerShape(30.dp))
 
 

@@ -64,15 +64,15 @@ fun EditProfile(
     var statmobile by remember { mutableStateOf(UpdateProfile.msg.phone) }
     var isEditing by remember { mutableStateOf(false) } // State variable to track editing mode
     // Temporary state variables to hold changes during editing
-    var tempFirstname by remember { mutableStateOf("") }
-    var tempLastname by remember { mutableStateOf("") }
-    var tempMobile by remember { mutableStateOf("") }
+    var tempFirstname by remember { mutableStateOf(statfirstname) }
+    var tempLastname by remember { mutableStateOf(statlastname) }
+    var tempMobile by remember { mutableStateOf(statmobile) }
     Column(
         Modifier
             .fillMaxSize()
             .background(Color.White)
-            ,
-        ) {
+        ,
+    ) {
         Box(modifier = Modifier
             .fillMaxWidth()
             .height(320.dp)){
@@ -156,22 +156,22 @@ fun EditProfile(
 
         ) {
         }
-            if(isEditing){
+        if(isEditing){
             Spacer(modifier = Modifier.height(20.dp) )
             HeadText(text = stringResource(id = R.string.Signup_First_name))
-             OutlineTextFieldToEditData(state = tempFirstname, OnValueChange = {tempFirstname =it},true)
+            OutlineTextFieldToEditData(state = tempFirstname, OnValueChange = {tempFirstname =it},true)
             HeadText(text ="Last name")
             OutlineTextFieldToEditData(state =tempLastname, OnValueChange = {tempLastname=it},true)
             HeadText(text ="Mobile Number")
             OutlineForMobile(state =tempMobile, OnValueChange = {tempMobile =it},true)
         }else{
-                Spacer(modifier = Modifier.height(20.dp) )
-                HeadText(text = stringResource(id = R.string.Signup_First_name))
-                OutlineTextFieldToEditData(state =statfirstname, OnValueChange = {},false)
-                HeadText(text ="Last name")
-                OutlineTextFieldToEditData(state =statlastname, OnValueChange = {},false)
-                HeadText(text ="Mobile Number")
-                OutlineForMobile(state =statmobile, OnValueChange = {},false)
+            Spacer(modifier = Modifier.height(20.dp) )
+            HeadText(text = stringResource(id = R.string.Signup_First_name))
+            OutlineTextFieldToEditData(state =statfirstname, OnValueChange = {},false)
+            HeadText(text ="Last name")
+            OutlineTextFieldToEditData(state =statlastname, OnValueChange = {},false)
+            HeadText(text ="Mobile Number")
+            OutlineForMobile(state =statmobile, OnValueChange = {},false)
         }
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -223,41 +223,41 @@ fun editWithName(
         .width(160.dp)
         .background(Color.White)
         .padding(5.dp) ) {
-      Row (
-          horizontalArrangement = Arrangement.Start
-      ){
-          Box(
-              modifier = Modifier
-                  .width(30.dp)
-                  .padding(start = 5.dp, top = 2.dp)
-          ) {
-              Image(
-                  painter = painterResource(id = R.drawable.edit), contentDescription = null,
-                  modifier = Modifier
-                      .size(22.dp)
-                      .padding(2.dp)
-              )
-          }
+        Row (
+            horizontalArrangement = Arrangement.Start
+        ){
+            Box(
+                modifier = Modifier
+                    .width(30.dp)
+                    .padding(start = 5.dp, top = 2.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.edit), contentDescription = null,
+                    modifier = Modifier
+                        .size(22.dp)
+                        .padding(2.dp)
+                )
+            }
 
-          Box (
-              modifier = Modifier
-                  .wrapContentSize()
-                  .clickable { onClick() }
-          ){
-              Text(
-                  text = "Edit profile",
-                  textAlign = TextAlign.Center,
-                  fontSize = 15.sp,
-                  fontWeight = FontWeight.Bold,
-                  color = blue1,
-                  modifier = Modifier
-                      .height(30.dp)
-                      .padding(top = 5.dp)
-                      ,
-                  textDecoration = TextDecoration.Underline
-              )
-          }
+            Box (
+                modifier = Modifier
+                    .wrapContentSize()
+                    .clickable { onClick() }
+            ){
+                Text(
+                    text = "Edit profile",
+                    textAlign = TextAlign.Center,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = blue1,
+                    modifier = Modifier
+                        .height(30.dp)
+                        .padding(top = 5.dp)
+                    ,
+                    textDecoration = TextDecoration.Underline
+                )
+            }
 
-      }
+        }
     }
 }

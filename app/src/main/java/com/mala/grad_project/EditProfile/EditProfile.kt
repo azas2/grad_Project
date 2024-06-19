@@ -158,7 +158,7 @@ fun EditProfile(
         }
         if(isEditing){
             Spacer(modifier = Modifier.height(20.dp) )
-            HeadText(text = stringResource(id = R.string.Signup_First_name))
+            HeadText(text = "First name")
             OutlineTextFieldToEditData(state = tempFirstname, OnValueChange = {tempFirstname =it},true)
             HeadText(text ="Last name")
             OutlineTextFieldToEditData(state =tempLastname, OnValueChange = {tempLastname=it},true)
@@ -166,7 +166,7 @@ fun EditProfile(
             OutlineForMobile(state =tempMobile, OnValueChange = {tempMobile =it},true)
         }else{
             Spacer(modifier = Modifier.height(20.dp) )
-            HeadText(text = stringResource(id = R.string.Signup_First_name))
+            HeadText(text = "First name")
             OutlineTextFieldToEditData(state =statfirstname, OnValueChange = {},false)
             HeadText(text ="Last name")
             OutlineTextFieldToEditData(state =statlastname, OnValueChange = {},false)

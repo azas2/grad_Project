@@ -10,9 +10,11 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -35,35 +37,41 @@ import coil.compose.rememberImagePainter
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import com.mala.grad_project.R
+import com.mala.grad_project.data.model.Exercise
 
 @Composable
-fun ExersizeGifCard(){
+fun ExersizeGifCard(
+    exersize: String,
+    visible: Boolean,
+    onclick:( () -> Unit)?=null,
+    sizeheight:Int?=null,
+    sizewidth:Int?=null
+){
     Box(
         Modifier
             .padding(10.dp)
             .shadow(elevation = 30.dp)
+
     ){
         Card (
-            modifier = Modifier.size(width =200.dp, height = 150.dp),
+            modifier = Modifier.size(width =sizewidth!!.dp, height = sizeheight!!.dp)
+            ,
             colors=CardDefaults.cardColors(
                 Color.White
             )
         ){
             Column (
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxSize()
+                    .clickable { onclick?.let { it() } }
             ){
-                GifImage("R.drawable.",visible = true)
+                GifImage(exersize,visible = true)
             }
 
         }
     }
 }
 
-@Composable
-@Preview
-fun testExersizeGifCard(){
-ExersizeGifCard()
-}
 
 @Composable
 fun GifImage(

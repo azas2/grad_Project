@@ -57,13 +57,7 @@ fun PlanUIScreen(
 
             Spacer(modifier = Modifier.height(10.dp))
         }
-        when(getPlansResponse.payment_status){
-            "null" -> CardOfSubscription(getPlansResponse)
-            "ACCEPTED" -> CardSubscraptionPending(getPlansResponse)
-            "REJECTED" -> CardSubscraptionRejected(getPlansResponse)
-            "UNSUBSCRIBED" ->TextUnSupscribed(getPlansResponse)
-            "COMPLETED" -> ExerSizeScreen(getPlansResponse)
-        }
+
 
     }
 }

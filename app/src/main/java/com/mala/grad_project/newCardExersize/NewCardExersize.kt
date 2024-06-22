@@ -86,7 +86,7 @@ fun NewCardExersize(
         ) {
             // GIF Card
             ExersizeGifCard(
-                exersize = exersize.exercise,
+                exersize ="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
                 visible = true,
                onclick = {showDialog=true}
             , sizewidth = 200,

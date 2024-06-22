@@ -65,7 +65,7 @@ fun ExersizeGifCard(
                 modifier = Modifier.fillMaxSize()
                     .clickable { onclick?.let { it() } }
             ){
-                GifImage(exersize,visible = true)
+                GifImage(exersize,visible = visible)
             }
 
         }

@@ -153,7 +153,7 @@ fun NewCardExersize(
     if (showDialog) {
         Dialog(onDismissRequest = { showDialog = false }) {
             GifImageDialog(
-                exersize = "R.drawable.example_gif",
+                exersize = exersize.exercise,
                 onDismiss = { showDialog = false }
             )
         }

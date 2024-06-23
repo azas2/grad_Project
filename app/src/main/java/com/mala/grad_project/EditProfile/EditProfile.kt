@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,18 +28,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
+import coil.compose.rememberImagePainter
 import com.mala.grad_project.R
 import com.mala.grad_project.Screenns.Home.composblefunction.BellImage
 import com.mala.grad_project.Screenns.Home.composblefunction.CircleCoachImage
@@ -50,15 +45,13 @@ import com.mala.grad_project.compoableOfData.CircleOutlinePreview
 import com.mala.grad_project.composables.HeadText
 import com.mala.grad_project.data.model.updateProfile.update_profile
 import com.mala.grad_project.ui.theme.blue1
-import com.mala.grad_project.ui.theme.blue2
-import com.mala.grad_project.ui.theme.hinttextColor
-import okhttp3.internal.wait
 
 @Composable
 fun EditProfile(
     UpdateProfile:update_profile,
-    onSave: (String, String, String) -> Unit
+    onSave: (String, String, String,Uri?) -> Unit
 ) {
+    var painter:Painter
     var statfirstname by remember { mutableStateOf(  UpdateProfile.msg.fname) }
     var statlastname by remember { mutableStateOf(UpdateProfile.msg.lname) }
     var statmobile by remember { mutableStateOf(UpdateProfile.msg.phone) }
@@ -67,10 +60,12 @@ fun EditProfile(
     var tempFirstname by remember { mutableStateOf(statfirstname) }
     var tempLastname by remember { mutableStateOf(statlastname) }
     var tempMobile by remember { mutableStateOf(statmobile) }
-    Column(
-        Modifier
-            .fillMaxSize()
-            .background(Color.White)
+    var photoUri by remember { mutableStateOf<Uri?>(null) }
+
+        Column(
+            Modifier
+                .fillMaxSize()
+                .background(Color.White)
         ,
     ) {
         Box(modifier = Modifier
@@ -113,21 +108,21 @@ fun EditProfile(
             ){
 
 
-                var photoUri: Uri? by remember { mutableStateOf(null) }
+
                 val launcher =
                     rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
                         photoUri = uri
                     }
+                painter = rememberImagePainter(
+                    data = if (photoUri != null) photoUri else UpdateProfile.msg.img,
+                    builder = {
+                        placeholder(R.drawable.man) // Placeholder image while loading
+                        error(R.drawable.polygon) // Error image if loading fails
+                        crossfade(true) // Crossfade animation between placeholder and loaded image
+                    }
+                )
 
-                val painter = if (photoUri != null) {
-                    rememberAsyncImagePainter(
-                        ImageRequest.Builder(LocalContext.current)
-                            .data(data = photoUri)
-                            .build()
-                    )
-                } else {
-                    painterResource(id = R.drawable.man)
-                }
+
 
                 CircleOutlinePreview(onclick = {
                     launcher.launch(
@@ -188,10 +183,10 @@ fun EditProfile(
                         statfirstname = tempFirstname
                         statlastname = tempLastname
                         statmobile = tempMobile
-                        onSave(statfirstname, statlastname, statmobile) },
+                        onSave(statfirstname, statlastname, statmobile,photoUri) },
                     text = "Save edit",
                     modifier = Modifier
-                        .padding(start=15.dp)
+                        .padding(start = 15.dp)
                         .weight(1f)
                 )
                 outlineButton(
@@ -199,10 +194,12 @@ fun EditProfile(
                         tempFirstname = statfirstname
                         tempLastname = statlastname
                         tempMobile = statmobile
-                        isEditing = false },
+                        isEditing = false
+                        photoUri=UpdateProfile.msg.img
+                    },
                     text = "Cancel",
                     modifier = Modifier
-                        .padding(end=15.dp ,start=5.dp)
+                        .padding(end = 15.dp, start = 5.dp)
                         .weight(1f)
                 )
             }

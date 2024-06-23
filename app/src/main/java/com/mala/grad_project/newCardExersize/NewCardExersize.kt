@@ -53,8 +53,13 @@ import com.mala.grad_project.ui.theme.moreBrightYellow
 fun NewCardExersize(
     exersize: Exercise
 ) {
+    val samllCardVisable:Boolean
     var showDialog by remember { mutableStateOf(false) }
-
+    samllCardVisable = if(showDialog==true){
+        false
+    }else{
+        true
+    }
     Box(
         modifier = Modifier
             .size(width = 250.dp, height = 320.dp)
@@ -84,10 +89,11 @@ fun NewCardExersize(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            // GIF Card
+            // GIF
+
             ExersizeGifCard(
                 exersize ="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
-                visible = true,
+                visible = samllCardVisable,
                onclick = {showDialog=true}
             , sizewidth = 200,
                 sizeheight = 150)
@@ -153,7 +159,7 @@ fun NewCardExersize(
     if (showDialog) {
         Dialog(onDismissRequest = { showDialog = false }) {
             GifImageDialog(
-                exersize = exersize.exercise,
+                exersize ="",
                 onDismiss = { showDialog = false }
             )
         }
@@ -162,7 +168,7 @@ fun NewCardExersize(
     if (showDialog==true) {
         Dialog(onDismissRequest = { showDialog = false }) {
             GifImageDialog(
-                exersize = exersize.exercise,
+                exersize = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif",
                 onDismiss = { showDialog = false }
             )
         }

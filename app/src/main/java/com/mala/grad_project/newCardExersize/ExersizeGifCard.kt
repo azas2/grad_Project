@@ -45,7 +45,8 @@ fun ExersizeGifCard(
     visible: Boolean,
     onclick:( () -> Unit)?=null,
     sizeheight:Int?=null,
-    sizewidth:Int?=null
+    sizewidth:Int?=null,
+    showDialog:Boolean?=null
 ){
     Box(
         Modifier
@@ -65,6 +66,7 @@ fun ExersizeGifCard(
                 modifier = Modifier.fillMaxSize()
                     .clickable { onclick?.let { it() } }
             ){
+
                 GifImage(exersize,visible = visible)
             }
 
